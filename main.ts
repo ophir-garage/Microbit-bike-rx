@@ -25,6 +25,28 @@ basic.forever(function () {
                 nextState = currentState+1;
                 break;
 
+        case 20:
+                basic.showLeds(`
+                . . . # #
+                . . # # #
+                # # # # #
+                . . # # #
+                . . . # #
+                `,100);
+                nextState = 0;
+                break;
+
+        case 21:
+                basic.showLeds(`
+                # # . . .
+                # # # . .
+                # # # # #
+                # # # . .
+                # # . . .
+                `,100);
+                nextState = 0;
+                break;
+
         default:
             basic.showLeds(`
                 . . . . .
