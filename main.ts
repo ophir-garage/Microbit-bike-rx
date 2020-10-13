@@ -6,7 +6,7 @@ let rxCount = 0
 let rxData = 0
 let nextState = 0
 let currentState = 0
-rxData = 0
+let lastRX=0
 radio.setGroup(1)
 basic.forever(function () {
     switch(currentState) {
@@ -22,7 +22,14 @@ basic.forever(function () {
                 # # # # #
                 # # # # #
                 `,100);
-                nextState = currentState+1;
+                if (lastRX == rxCount)
+                {
+                    nextState = currentState+1;
+                } else
+                {
+                    nextState = rxData==0 ? 20 : 21
+                }
+                
                 break;
 
         case 20:
@@ -33,7 +40,13 @@ basic.forever(function () {
                 . . # # #
                 . . . # #
                 `,100);
-                nextState = 0;
+                if (lastRX == rxCount)
+                {
+                    nextState = 0;
+                } else
+                {
+                    nextState = rxData==0 ? 20 : 21
+                }
                 break;
 
         case 21:
@@ -44,7 +57,13 @@ basic.forever(function () {
                 # # # . .
                 # # . . .
                 `,100);
-                nextState = 0;
+                if (lastRX == rxCount)
+                {
+                    nextState = 0;
+                } else
+                {
+                    nextState = rxData==0 ? 20 : 21
+                }
                 break;
 
         default:
@@ -55,11 +74,18 @@ basic.forever(function () {
                 . . . . .
                 . . . . .
                 `,100)
-                if (currentState == 19) {
+                if (lastRX == rxCount)
+                {
+                    if (currentState >= 19) {
                     nextState = 0
                     } else {
                         nextState = currentState+1;
                     }
+                } else
+                {
+                    nextState = rxData==0 ? 20 : 21
+                }
+                
         }
 // last line
     currentState = nextState
