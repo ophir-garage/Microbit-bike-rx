@@ -2,6 +2,14 @@ radio.onReceivedNumber(function (receivedNumber) {
     rxData = receivedNumber
     rxCount += 1
 })
+input.onButtonPressed(Button.A, function () {
+    rxData = 0
+    rxCount += 1
+})
+input.onButtonPressed(Button.B, function () {
+    rxData = 1
+    rxCount += 1
+})
 let rxCount = 0
 let rxData = 0
 let nextState = 0
@@ -28,6 +36,7 @@ basic.forever(function () {
                 } else
                 {
                     nextState = rxData==0 ? 20 : 21
+                    lastRX = rxCount
                 }
                 
                 break;
@@ -39,13 +48,14 @@ basic.forever(function () {
                 # # # # #
                 . . # # #
                 . . . # #
-                `,100);
+                `,500);
                 if (lastRX == rxCount)
                 {
                     nextState = 0;
                 } else
                 {
                     nextState = rxData==0 ? 20 : 21
+                    lastRX = rxCount
                 }
                 break;
 
@@ -56,13 +66,14 @@ basic.forever(function () {
                 # # # # #
                 # # # . .
                 # # . . .
-                `,100);
+                `,500);
                 if (lastRX == rxCount)
                 {
                     nextState = 0;
                 } else
                 {
                     nextState = rxData==0 ? 20 : 21
+                    lastRX = rxCount
                 }
                 break;
 
