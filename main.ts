@@ -44,11 +44,11 @@ basic.forever(function () {
 
         case 20:
                 basic.showLeds(`
-                . . . # #
-                . . # # #
+                . . # . .
+                . # # . .
                 # # # # #
-                . . # # #
-                . . . # #
+                . # # . .
+                . . # . .
                 `,500);
                 if (lastRX == rxCount)
                 {
@@ -62,11 +62,11 @@ basic.forever(function () {
 
         case 21:
                 basic.showLeds(`
-                # # . . .
-                # # # . .
+                . . # . .
+                . # # . .
                 # # # # #
-                # # # . .
-                # # . . .
+                . # # . . 
+                . . # . .
                 `,500);
                 if (lastRX == rxCount)
                 {
