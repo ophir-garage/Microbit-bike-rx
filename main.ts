@@ -1,6 +1,7 @@
 radio.onReceivedNumber(function (receivedNumber) {
     rxData = receivedNumber
     rxCount += 1
+    radio.sendNumber(receivedNumber + 2)
 })
 input.onButtonPressed(Button.A, function () {
     rxData = 0
@@ -10,11 +11,11 @@ input.onButtonPressed(Button.B, function () {
     rxData = 1
     rxCount += 1
 })
-let rxCount = 0
-let rxData = 0
-let nextState = 0
-let currentState = 0
 let lastRX=0
+let currentState = 0
+let nextState = 0
+let rxData = 0
+let rxCount = 0
 radio.setGroup(1)
 basic.forever(function () {
     switch(currentState) {
